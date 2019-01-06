@@ -8,7 +8,8 @@ public class WormController : MonoBehaviour
     public GameObject bodyPrefab;
     public float interval = 0.5f;
     public FoodController foodController;
-    private Vector3 currentDirection = Vector3.right;
+    private Vector3 nextDirection = Vector3.right;
+    private Vector3 previousDirection = Vector3.right;
     private IEnumerator moveRoutine;
     private bool move = false;
     private List<GameObject> bodyParts = new List<GameObject>();
@@ -32,13 +33,13 @@ public class WormController : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.0f)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.0f && !(Mathf.Abs(previousDirection.x) > 0))
             {
-                currentDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                nextDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
             }
-            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.0f)
+            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.0f && !(Mathf.Abs(previousDirection.z) > 0))
             {
-                currentDirection = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
+                nextDirection = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
             }
         }
         if (move)
@@ -88,7 +89,8 @@ public class WormController : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         spawnPosition = transform.position;
-        transform.Translate(currentDirection);
+        transform.Translate(nextDirection);
+        previousDirection = nextDirection;
         move = true;
         StartCoroutine(MoveTimer());
     }
