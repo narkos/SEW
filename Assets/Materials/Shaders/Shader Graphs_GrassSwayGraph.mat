@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_GrassSwayGraph
+  m_Shader: {fileID: 4800000, guid: a61bf41595b911d47be9624dd6319139, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_1E04F28A: 0.5
+    - Vector1_353BD199: 1.5
+    - Vector1_420D7A8B: 1
+    - Vector1_4966766C: 0.05
+    - Vector1_4D162630: 0.02
+    - Vector1_65D48906: 1
+    - Vector1_876670AA: 25
+    - Vector1_8B2BD18F: 1
+    - Vector1_A6518103: 2
+    - Vector1_AB318C2C: 1.49
+    - Vector1_B4F6F847: 2.35
+    - Vector1_D796A4FA: 2.03
+    - Vector1_E4286000: 0.54
+    m_Colors:
+    - Color_6312E1F0: {r: 0.42011136, g: 0.9150943, b: 0.40143287, a: 1}
+    - Color_DA01F0F6: {r: 0.0813474, g: 0.30188674, b: 0.07547168, a: 0}
