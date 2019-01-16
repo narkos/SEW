@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GrassDisplacement
-  m_Shader: {fileID: 4800000, guid: f16bcbee32b09994dab2fff101c8f56b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5bcac932994b62546ab09e7a4837bc83, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -44,6 +44,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_4D162630: 0.02
+    - Vector1_A6518103: 5
+    - Vector1_AB7D5EA2: 5.17
+    - Vector1_B4F6F847: 3.89
+    - Vector1_D796A4FA: 1.8
+    - Vector1_E4286000: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -64,7 +70,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_6B2927AB: {r: 0.6588235, g: 0.7924528, b: 0.42239228, a: 0}
+    - Color_9C931FD8: {r: 0.31562686, g: 0.5943396, b: 0.10372908, a: 1}
+    - Vector3_F3EE2D51: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TargetPosition: {r: 0.6, g: 2.445, b: 0.74, a: 0}
+    - _TargetPosition: {r: -0.72, g: 3, b: 3.33, a: 0}

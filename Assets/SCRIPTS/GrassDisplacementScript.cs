@@ -7,7 +7,7 @@ public class GrassDisplacementScript : MonoBehaviour
     [SerializeField]
     private float radius;
     [SerializeField]
-    private Material grassMaterial;
+    public Material grassMaterial;
 
     void Start()
     {
