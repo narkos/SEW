@@ -46,7 +46,7 @@ Material:
     m_Floats:
     - Vector1_4D162630: 0.02
     - Vector1_A6518103: 5
-    - Vector1_AB7D5EA2: 5.17
+    - Vector1_AB7D5EA2: 1
     - Vector1_B4F6F847: 3.89
     - Vector1_D796A4FA: 1.8
     - Vector1_E4286000: 0.5
@@ -76,4 +76,4 @@ Material:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TargetPosition: {r: -0.72, g: 3, b: 3.33, a: 0}
+    - _TargetPosition: {r: -8, g: 0, b: -6.567188, a: 0}
