@@ -6,10 +6,21 @@ using UnityEngine.Rendering.PostProcessing;
 [Serializable]
 public sealed class Vector4ArrayParameter : ParameterOverride<Vector4[]>
 {
-    public Vector4ArrayParameter (int count, Vector4[] array) 
+    public Vector4ArrayParameter (Vector4[] array) 
     {
+        int count = array.Length;
         value = new Vector4[count];
         value = array;
+        //Debug.Log(value[0]);
+    }
+
+    public Vector4ArrayParameter (int count, Transform[] array) 
+    {
+        value = new Vector4[count];
+        for (int i = 0; i < array.Length; i++)
+        {
+            value[i] = array[i].position;
+        }
     }
 
     public Vector4ArrayParameter ()
@@ -19,8 +30,7 @@ public sealed class Vector4ArrayParameter : ParameterOverride<Vector4[]>
 
     public int Count()
     {
-        Debug.Log(value);
-        return value != null ? value.Length : 0;
+        return (this).value != null ? value.Length : 0;
     }
 }
 
@@ -39,32 +49,23 @@ public sealed class LwrpRaymarching : PostProcessEffectSettings
     public FloatParameter drawDistance = new FloatParameter { value = 50.0f};
     [Range(32, 256), Tooltip("Raymarch Max Iterations")]
     public IntParameter maxIterations = new IntParameter { value = 64 };
-    public int numberOfTargets = 0;
 
-    public void setTargets(int count, Transform[] newTransforms)
+    public void SetTargets(int count, Transform[] newTransforms)
     {
-        numberOfTargets = count;
-        Debug.Log(numberOfTargets);
         if (targets == null || targets.Length != count)
         {
-            targets = new Vector4[count];
+            this.targets = new Vector4[count];
         }
         for (int i = 0; i < count; i++)
         {
-            targets[i] = newTransforms[i].position;          
-            Debug.Log(targets[i]);  
+            this.targets[i] = newTransforms[i].position;          
         }
-        targetParam = new Vector4ArrayParameter(count, targets);
+        targetParam.Override(targets);
     }
 }
 
 public sealed class LwrpRaymarchingRenderer : PostProcessEffectRenderer<LwrpRaymarching>
 {
-    public override void Init()
-    {
-
-    }
-
     public override void Render(PostProcessRenderContext context)
     {
         Camera cam = context.camera;
@@ -96,19 +97,16 @@ public sealed class LwrpRaymarchingRenderer : PostProcessEffectRenderer<LwrpRaym
         {
             sheet.properties.SetVector("_Sphere1", settings.sphere);
         }
-        // Debug.Log(settings.numberOfTargets);
-        // Borde kunna cacha detta
-        if (settings.targetParam.Count() > 0) {
-            Debug.Log(settings.targetParam.Count());
-        }
-        if (settings.numberOfTargets > 0)
+
+        // Set target array
+        int targetCount = settings.targetParam.Count();
+        if (targetCount > 0)
         {
-            //Debug.Log(settings.numberOfTargets.value);
-                Debug.Log(settings.numberOfTargets);
-            if (settings.targets != null && settings.targets.Length > 0)
+            Vector4[] targetPositions = settings.targetParam.value;
+            if (targetPositions != null)
             {
-                sheet.properties.SetInt("_TargetCount", settings.numberOfTargets);
-                sheet.properties.SetVectorArray("_Targets", settings.targets);
+                sheet.properties.SetInt("_TargetCount", targetCount);
+                sheet.properties.SetVectorArray("_Targets", targetPositions);
             }
         } else {
                 sheet.properties.SetInt("_TargetCount", 0);            

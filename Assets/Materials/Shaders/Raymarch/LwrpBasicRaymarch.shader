@@ -58,20 +58,20 @@
 
         float distanceField(float3 p)
         {
-            float value;
+            float value = 0;
             if (_TargetCount > 0)
             {
-                value = phere(p - _Targets[0].xyz, 0.5);
-                // for (int i = 0; i < _TargetCount; i++)
-                // {
-                //     float sphere = sdSphere(p - _Targets[i].xyz, 0.1);
-                //     if (i == 0)
-                //     {
-                //         value = sphere;
-                //         continue;
-                //     }
-                //     value = opUS(sphere, value, 1);
-                // }
+                //value = phere(p - _Targets[0].xyz, 0.5);
+                for (int i = 0; i < _TargetCount; i++)
+                {
+                    float sphere = sdSphere(p - _Targets[i].xyz, 0.5);
+                    if (i == 0)
+                    {
+                        value = sphere;
+                        continue;
+                    }
+                    value = opUS(sphere, value, 1);
+                }
             }
             return value;
             //return sdSphere(p - _Sphere1.xyz, _Sphere1.w);
@@ -82,7 +82,7 @@
             fixed4 ret = fixed4(0,0,0,0);
 
             float t = 0;
-            const int max_iteration = _MaxIterations || 64;
+            const int max_iteration = _MaxIterations;
             for(int i = 0; i < max_iteration; i++)
             {
                 if (t > _DrawDistance)
